@@ -1,45 +1,40 @@
-package com.itheima.edu.info.manager.domain;
+package com.itheima.edu.info.manager.entry;
 
-public class Teacher {
-    private String id;
-    private String name;
-    private String age;
-    private String birthday;
+import com.itheima.edu.info.manager.controller.StudentController;
+import com.itheima.edu.info.manager.controller.TeacherController;
+import com.itheima.edu.info.manager.domain.Student;
 
-    //无参构造方法
-    public Teacher() {
-    }
-    //全参构造方法
-    public Teacher(String id, String name,String age,String birthday){
-        this.id=id;
-        this.name = name;
-        this.age= age;
-        this.birthday = birthday;
-    }
-    //get函数和set函数
-    public String getId(){
-        return this.id;
-    }
-    public void setId(String id){
-        this.id = id;
-    }
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getAge(){
-        return this.age;
-    }
-    public void setAge(String age){
-        this.age = age;
-    }
-    public String getBirthday(){
-        return this.birthday;
-    }
-    public void setBirthday(String birthday){
-        this.birthday = birthday;
-    }
+import java.util.Scanner;
 
+public class InfoManagerEntry {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("--------欢迎来到黑马信息管理系统--------");
+            System.out.println("请输入您的选择: 1.学生管理  2.老师管理  3.退出");
+            String choice = sc.next();
+            switch (choice) {
+                case "1":
+                    //System.out.println("学生管理");
+                    //开启学生管理系统
+                    StudentController studentController = new StudentController();
+                    studentController.start();
+                    break;
+                case "2":
+                    //System.out.println("老师管理");
+                    TeacherController teacherController = new TeacherController();
+                    teacherController.start();
+                    break;
+                case "3":
+                    System.out.println("感谢您的使用");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("您的输入有误, 请重新输入");
+                    break;
+            }
+        }
+
+
+    }
 }
